@@ -22,8 +22,13 @@ def main():
 
         # Create new player
         player = Player()
-        # Draw the player on the screen
-        window.blit(player.surf, (100, 100))
+        
+        # Collect all sprites
+        all_sprites_list = pygame.sprite.Group() 
+        all_sprites_list.add(player)
+
+        # Draw the sprites on the screen
+        all_sprites_list.draw(window)
 
         # Flip the display
         pygame.display.flip()
@@ -37,9 +42,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         # Calls parent constructor
         super().__init__()
-        self.surf = pygame.Surface((75, 25))
-        self.surf.fill((100, 200, 255))
-        self.rect = self.surf.get_rect()
+        self.image = pygame.image.load("./pippi.png")
+        self.rect = self.image.get_rect()
 
 
 if __name__ == '__main__':
